@@ -1,6 +1,13 @@
+import { useEffect } from "react";
 import { Container } from "./styles";
 
 export function TransactionTable() {
+  useEffect(() => {
+    fetch('http://localhost:3000/api/transactions')
+      .then(response => response.json()) //Pegar a resposta da requisição e converter para formato json
+      .then(data => console.log(data)) //retornar para visualização no console
+  }, []);// Array vazio para rodar apenas uma vez por ser apenas uma busca
+
   return (
     <Container>
       <table>
