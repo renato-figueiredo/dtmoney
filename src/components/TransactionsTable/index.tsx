@@ -1,11 +1,12 @@
 import { useEffect } from "react";
+import { api } from "../../services/api";
 import { Container } from "./styles";
 
 export function TransactionTable() {
   useEffect(() => {
-    fetch('http://localhost:3000/api/transactions')
-      .then(response => response.json()) //Pegar a resposta da requisição e converter para formato json
-      .then(data => console.log(data)) //retornar para visualização no console
+    api.get('transactions') //trocar o fetch para uso da biblioteca AXIOS
+      //.then(response => response.json()) [não é mais necessario converter para JSON por usar a biblioteca axios]//Pegar a resposta da requisição e converter para formato json
+      .then(response => console.log(response.data)) //retornar para visualização no console
   }, []);// Array vazio para rodar apenas uma vez por ser apenas uma busca
 
   return (
